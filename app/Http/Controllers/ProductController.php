@@ -14,4 +14,10 @@ class ProductController extends Controller
 
         return view('product',['products'=>$data]);
     }
+    function detail($id)
+    {
+        $data=Product::find($id);
+        return view('detail',['product'=>$data]);
+    }
 }
+
