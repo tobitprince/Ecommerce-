@@ -34,7 +34,8 @@ if (Session::has('user'))
         <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Cart({{$total}})</a></li>
+        <li><a href="/cartlist"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart<span id="cart-count" class="text-warning bg-light" style="text-align:center;padding: 0rem 0.9rem 0.1rem 0.9rem !important;border-radius: 3rem !important;"> {{$total}} </span></a></li>
+       
         @if (Session::has('user'))
             
         <li class="dropdown">
