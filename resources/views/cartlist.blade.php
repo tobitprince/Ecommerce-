@@ -7,6 +7,7 @@
  			<div class="shopping-cart">
  				<h6 class="text-capitalize" style="color: orange; font-size: 30px;">{{Session::get('user')['name']}}'s Cart</h6>
                  <hr>
+                 <a class="btn btn-success" href="ordernow">Order Now</a><br><br>
                  @foreach($products as $item)
                 <div class="border rounded cart-list-divider">
                     <div class="row bg-white">
@@ -38,6 +39,7 @@
                 @endforeach
               
               </div>
+              <a class="btn btn-success" href="ordernow">Order Now</a><br><br>
          </div>
         </div>
 </div>
