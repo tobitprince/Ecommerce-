@@ -1,4 +1,5 @@
 @extends('master')
+@include('flash-message')
 @section("content")
 <div class="container-fluid bg-light">
  	

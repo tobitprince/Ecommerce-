@@ -14,7 +14,7 @@ class UserController extends Controller
         
         if(!$user || !Hash::check($req->password,$user->password))
         {
-            return "Username or password is incorrect";
+            return redirect()->back()->with('errorMsg',"Current Passowrd is Invalid");
         }
         else
         {
@@ -22,4 +22,39 @@ class UserController extends Controller
             return redirect('/');
         }
     }
+    function register(Request $req)
+    {
+        $user= new User;
+        $user->name=$req->name;
+        $user->email=$req->email;
+        $user->password=Hash::make($req->password);
+        $user->save();
+        return redirect('/login')->with('success','Product successfully added.');
+
+    }
+    
+    public function changePassword(Request $req)
+    {
+        $this->validate($req,[
+            'oldpassword'=>'password',
+            'password'=>'password'
+
+
+        ]);
+        $hashedPassword=Auth::user()->password;
+        if(Hash::check($req->oldpassword,$hashedPassword))
+        {
+            $user=User::find(Auth::id());
+            $user->password=Hash::make($req->password);
+            $user->save();
+            Auth::logout();
+            return redirect()->route('login')->with('successMsg',"Password is Changed Successfully");
+        }
+        else
+        {
+            return redirect()->back()->with('errorMsg',"Current Passowrd is Invalid");
+        }
+    }
+
+
 }

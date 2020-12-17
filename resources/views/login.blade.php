@@ -1,5 +1,8 @@
 @extends('master')
+@include('flash-message')
 @section("content")
+
+
     <div class="container custom-login">
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">

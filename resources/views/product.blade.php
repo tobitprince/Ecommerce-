@@ -1,5 +1,7 @@
 @extends('master')
+@include('flash-message')
 @section("content")
+
 <div class="custom-product">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
