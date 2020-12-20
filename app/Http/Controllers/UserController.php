@@ -38,22 +38,9 @@ class UserController extends Controller
         $this->validate($req,[
             'oldpassword'=>'password',
             'password'=>'password'
+     return redirect('/');
 
-
-        ]);
-        $hashedPassword=Auth::user()->password;
-        if(Hash::check($req->oldpassword,$hashedPassword))
-        {
-            $user=User::find(Auth::id());
-            $user->password=Hash::make($req->password);
-            $user->save();
-            Auth::logout();
-            return redirect()->route('login')->with('successMsg',"Password is Changed Successfully");
-        }
-        else
-        {
-            return redirect()->back()->with('errorMsg',"Current Passowrd is Invalid");
-        }
+      
     }
 
 
